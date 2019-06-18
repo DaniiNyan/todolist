@@ -1,11 +1,9 @@
 package com.daniinyan.todolist.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "todolists")
 public class ToDoList {
 
     @Id
@@ -15,6 +13,10 @@ public class ToDoList {
     private String name;
 
     public ToDoList() {
+    }
+
+    public ToDoList(String name) {
+        this.name = name;
     }
 
     public String getName() {
