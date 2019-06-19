@@ -29,11 +29,11 @@ public class ShowToDoListTest {
     public void setUp() {
         RestAssured.port = port;
         RestAssured.baseURI = "http://localhost";
+        toDoListRepository.deleteAll();
     }
 
     @Test
     public void mustSearchToDoList() {
-        toDoListRepository.deleteAll();
 
         ToDoList testList = new ToDoList("Test List");
         ToDoList anotherTestList = new ToDoList("Another Test List");
@@ -48,6 +48,6 @@ public class ShowToDoListTest {
                 .then()
                 .body("name", Matchers.hasItems("Test List", "Another Test List"))
                 .statusCode(HttpStatus.OK.value());
-
     }
+
 }
