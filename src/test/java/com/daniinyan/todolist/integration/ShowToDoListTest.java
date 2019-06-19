@@ -17,14 +17,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ListarToDoListTest {
+public class ShowToDoListTest {
 
     @LocalServerPort
     private int port;
 
     @Autowired
     private ToDoListRepository toDoListRepository;
-
 
     @Before
     public void setUp() {
@@ -34,15 +33,20 @@ public class ListarToDoListTest {
 
     @Test
     public void mustSearchToDoList() {
+        toDoListRepository.deleteAll();
+
         ToDoList testList = new ToDoList("Test List");
+        ToDoList anotherTestList = new ToDoList("Another Test List");
         Item item1 = new Item("First item", testList);
         Item item2 = new Item("Second item", testList);
-        //toDoListRepository.save(testList);
+
+        toDoListRepository.save(testList);
+        toDoListRepository.save(anotherTestList);
 
         RestAssured
                 .get("/")
                 .then()
-                .body("name", Matchers.hasItems("First item", "Second item"))
+                .body("name", Matchers.hasItems("Test List", "Another Test List"))
                 .statusCode(HttpStatus.OK.value());
 
     }

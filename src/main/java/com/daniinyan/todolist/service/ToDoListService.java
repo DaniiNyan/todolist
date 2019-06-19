@@ -19,15 +19,15 @@ public class ToDoListService {
         this.itemRepository = itemRepository;
     }
 
-    public List<String> getLists() {
-        List<ToDoList> toDoLists = toDoListRepository.findAll();
-        List<String> toDoListsNames = new ArrayList<>();
+    public List<ToDoList> getLists() {
+//        List<ToDoList> toDoLists = toDoListRepository.findAll();
+//        List<String> toDoListsNames = new ArrayList<>();
+//
+//        for (ToDoList toDoList : toDoLists) {
+//            toDoListsNames.add(toDoList.getName());
+//        }
 
-        for (ToDoList toDoList : toDoLists) {
-            toDoListsNames.add(toDoList.getName());
-        }
-
-        return toDoListsNames;
+        return toDoListRepository.findAll();
     }
 
     public List<Item> listItems(ToDoList toDoList) {

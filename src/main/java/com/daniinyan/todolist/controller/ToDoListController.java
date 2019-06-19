@@ -1,6 +1,7 @@
 package com.daniinyan.todolist.controller;
 
 import com.daniinyan.todolist.domain.Item;
+import com.daniinyan.todolist.domain.ToDoList;
 import com.daniinyan.todolist.service.ToDoListService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class ToDoListController {
 
     @GetMapping
     @ResponseBody
-    public List<String> getList() {
+    public List<ToDoList> getList() {
         return toDoListService.getLists();
     }
 
