@@ -37,7 +37,7 @@ public class ListarToDoListTest {
         ToDoList testList = new ToDoList("Test List");
         Item item1 = new Item("First item", testList);
         Item item2 = new Item("Second item", testList);
-        toDoListRepository.save(testList);
+        //toDoListRepository.save(testList);
 
         RestAssured
                 .get("/")

@@ -6,6 +6,7 @@ import com.daniinyan.todolist.repository.ItemRepository;
 import com.daniinyan.todolist.repository.ToDoListRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +17,17 @@ public class ToDoListService {
     public ToDoListService(ToDoListRepository toDoListRepository, ItemRepository itemRepository) {
         this.toDoListRepository = toDoListRepository;
         this.itemRepository = itemRepository;
+    }
+
+    public List<String> getLists() {
+        List<ToDoList> toDoLists = toDoListRepository.findAll();
+        List<String> toDoListsNames = new ArrayList<>();
+
+        for (ToDoList toDoList : toDoLists) {
+            toDoListsNames.add(toDoList.getName());
+        }
+
+        return toDoListsNames;
     }
 
     public List<Item> listItems(ToDoList toDoList) {
