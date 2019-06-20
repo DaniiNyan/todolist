@@ -15,8 +15,8 @@ public class Item {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_todolist", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_toDoList")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private ToDoList toDoList;
 
